@@ -1,0 +1,32 @@
+
+<% include ../../partials/header.ejs %>
+
+<div class="container" style="margin-top:50px">
+    
+        <h1 style="text-align:center">Edit Review</h1>
+        
+        <div style="width:30%; margin:25px auto;">
+            <form action="/admin/courses/<%=course_id%>/reviews/<%=review._id%>?_method=PUT" method="POST">
+                
+                <div class="form-group">
+                    <label for="TitleInput">Title</label>
+                    <input class="form-control" type="text" id="TitleInput" value="<%=review.title%>" name="review[title]">
+                </div>
+                <div class="form-group">
+                    <label for="DescriptionInput">Description</label>
+                    <input class="form-control" type="text" id="DescriptionInput" value="<%=review.description%>" name="review[description]">
+                </div>
+                <div class="form-group">
+                    <label for="RatingInput">Rating</label>
+                    <input class="form-control" type="text" id="RatingInput" value="<%=review.rating%>" name="review[rating]">
+                </div>
+                
+                
+                <button class="btn btn-lg btn-primary btn-block">submit</button>
+                
+            </form>
+            <a href="/courses/<%=course_id%>">Go Back</a>
+        </div>
+</div>
+
+<% include ../../partials/footer.ejs %>

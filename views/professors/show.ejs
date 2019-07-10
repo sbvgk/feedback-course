@@ -1,0 +1,274 @@
+<% include ../partials/header.ejs %>
+
+
+<div id="professorDetailsPage" class="container-fluid">
+    <div class="row">
+        <div class="board">
+
+            <div class="board-inner">
+                <ul class="nav nav-tabs"  id="myTab">
+                    <div class="liner" style="width: 50%;"></div>
+                    <li class="active" style="width: 50%;">
+                        <a href="#professor" data-toggle="tab" title="Professor details">
+                            <i class="round-tabs one">
+                                <img class="tabIcon" src="/images/professor.png" alt="Professor details">
+                            </i> 
+                        </a><div class="tabIconTitle text-center">Professor Details</div></li>
+
+                    <li style="width: 50%;"><a href="#review" data-toggle="tab" title="Reviews">
+                        <i class="round-tabs two">
+                            <img class="tabIcon" src="/images/customer-review.png" alt="Reviews">
+                        </i> 
+                        </a><div class="tabIconTitle text-center">Reviews</div>
+                    </li>
+        
+
+                </ul></div>
+
+            <div class="tab-content">
+                <div id="mascotGreeting" class="mascot-hi">
+                    <p id="mascot-text">Howdy! Select different tabs to explore</p>
+                    <img src="/images/elephant1.png" alt="Mascot greeting">
+
+                </div>
+                <div class="tab-pane fade in active" id="professor">
+
+                    <h3 class="head text-center">Professor Details</h3>
+                   
+                    <div class="blog-card">
+
+                        <div class="container-fluid ">
+                            <div class="row">
+                                <div class ="col-sm-5 col-md-5">
+                                    <img class="prof_image" src="\images\professor.png" alt="">
+                       
+                                </div>
+                                <div class ="col-sm-7 col-md-7 ">
+                                        <div class="description" >
+                                                <h1 style="font-size:1.4em;" id="professorID"><%=professor.name%></h1>
+                                                <h2 style="font-size:1.2em;" id="professorDesc"><%=professor.title%></h2>
+                                                <br>
+                                                <br>
+                                            </div>
+                                            <hr>
+                                            <div style="position: relative;">
+                                                    <% if(currentUser && professor.author.id.equals(currentUser._id)){ %>
+                                                        <a style="float:left; " class="btn btn-xs btn-warning edit-btn" href="/professors/<%=professor._id%>/edit">Edit</a>
+                                                        <form class="delete-form" action="/professors/<%=professor._id%>?_method=DELETE" method="POST">
+                                                            <button style="margin-left:10px;margin-bottom:10px; z-index:10" class="btn btn-xs btn-danger float-right">Delete</button>
+                                                        </form>
+                                                        <% } %>
+                                            </div>
+                                              
+                                            
+                                </div>
+                            </div>
+                            </div>
+                      
+                    </div>               
+                   
+
+                <p class="text-center">
+                    <a href="#review" data-toggle="tab" class="btn btn-outline-rounded readBtn" style="font-size: 1.3em;">Read reviews</a>
+                </p>
+            </div>
+            <div class="tab-pane fade" id="review">
+                <h3 class="head text-center">Student <br> Reviews</h3>
+
+                <div class="container-fluid reviewContainer">
+                    <% var ratingArr = [];
+                    professor.reviews.forEach(function(review){ratingArr.push(review.rating)});
+                    var sum = ratingArr.reduce(function(a,b){
+                        return a+b;
+                    },0);
+                    var avg = sum / ratingArr.length ||0;
+                    var obj = {
+                        one:0,
+                        two:0,
+                        three:0,
+                        four:0,
+                        five:0
+                    };
+
+                    ratingArr.forEach(function(rating){
+                        switch(rating){
+                            case 1:
+                                obj.one = obj.one+1;
+                                break;
+                            case 2:
+                                obj.two = obj.two+1;
+                                break;
+                            case 3:
+                                obj.three = obj.three+1;
+                                break;
+                            case 4:
+                                obj.four = obj.four+1;
+                                break;
+                            case 5:
+                                obj.five = obj.five+1;
+                                break;
+                                     }
+                    }) %>
+
+
+                    <div class="row">
+                        <div class="ratingContainer container-fluid">
+                            <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
+                                <div class="rating-block">
+                                    <h4>Average user rating</h4>
+                                    <h2 class="bold padding-bottom-7"><%=avg.toFixed(2)%> <small>/ 5</small></h2>
+                                    <% for(let i=0;i< Math.floor(avg);i++){ %>
+                                    <button type="button" class="btn btn-warning btn-sm btnRating" aria-label="Left Align"><i class="fa fa-star"></i>
+
+                                    </button>                 
+                                    <% } %>
+                                    <% for(let i=Math.floor(avg);i< 5;i++){ %>
+                                    <button type="button" class="btn btn-default btn-grey btn-sm btnRating" aria-label="Left Align"><i class="fa fa-star"></i>
+
+                                    </button>              
+                                    <% } %>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                <div class="rating-breakdown">
+                                    <h4>Rating breakdown</h4>
+                                    <div class="pull-left">
+                                        <div class="pull-left" style="width:35px; line-height:1;">
+                                            <div style="height:9px; margin:5px 0;">5  <span class="fa fa-star checked"></span></div>
+                                        </div>
+                                        <div class="pull-left" style="width:180px;">
+                                            <div class="progress" style="height:9px; margin:8px 0;">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
+                                                    <span class="sr-only">80% Complete (danger)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pull-right" style="margin-left:10px;"><%=obj.five%></div>
+                                    </div>
+                                    <div class="pull-left">
+                                        <div class="pull-left" style="width:35px; line-height:1;">
+                                            <div style="height:9px; margin:5px 0;">4  <span class="fa fa-star checked"></span></div>
+                                        </div>
+                                        <div class="pull-left" style="width:180px;">
+                                            <div class="progress" style="height:9px; margin:8px 0;">
+                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
+                                                    <span class="sr-only">80% Complete (danger)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pull-right" style="margin-left:10px;"><%=obj.four%></div>
+                                    </div>
+                                    <div class="pull-left">
+                                        <div class="pull-left" style="width:35px; line-height:1;">
+                                            <div style="height:9px; margin:5px 0;">3  <span class="fa fa-star checked"></span></div>
+                                        </div>
+                                        <div class="pull-left" style="width:180px;">
+                                            <div class="progress" style="height:9px; margin:8px 0;">
+                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
+                                                    <span class="sr-only">80% Complete (danger)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pull-right" style="margin-left:10px;"><%=obj.three%></div>
+                                    </div>
+                                    <div class="pull-left">
+                                        <div class="pull-left" style="width:35px; line-height:1;">
+                                            <div style="height:9px; margin:5px 0;">2  <span class="fa fa-star checked"></span></div>
+                                        </div>
+                                        <div class="pull-left" style="width:180px;">
+                                            <div class="progress" style="height:9px; margin:8px 0;">
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
+                                                    <span class="sr-only">80% Complete (danger)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pull-right" style="margin-left:10px;"><%=obj.two%></div>
+                                    </div>
+                                    <div class="pull-left">
+                                        <div class="pull-left" style="width:35px; line-height:1;">
+                                            <div style="height:9px; margin:5px 0;">1  <span class="fa fa-star checked"></span></div>
+                                        </div>
+                                        <div class="pull-left" style="width:180px;">
+                                            <div class="progress" style="height:9px; margin:8px 0;">
+                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
+                                                    <span class="sr-only">80% Complete (danger)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pull-right" style="margin-left:10px;"><%=obj.one%></div>
+                                    </div>
+                                </div>
+                            </div>			
+                        </div>	
+                    </div>	
+
+
+                    <div class="row">
+                        <div class="review-Content container-fluid">
+                            <div class="col-sm-7">
+                                <hr/>
+                                <div class="text-left">
+                                    <a style="margin:5px 0" class="btn btn-success" href="/professors/<%=professor._id%>/pReviews/new">Add New Review</a>
+                                </div>
+
+
+                                <% professor.reviews.forEach(function(review){ %>
+
+                                <div class="review-block">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+                                            <div class="review-block-name"><a href="#"><%= review.author.username %></a></div>
+                                            <div class="review-block-date"><%=review.time%></div>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <div class="review-block-rate">
+                                                <% for(var i=0;i<Math.floor(review.rating);i++){ %>
+                                                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                    <i class="fa fa-star"></i>
+                                                </button>                 
+                                                <%}%>
+
+                                                <% for(var i=Math.floor(review.rating);i<5;i++){ %>
+                                                <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                                                    <i class="fa fa-star"></i>
+                                                </button>                            
+                                                <%}%>
+
+                                            </div>
+                                            <div class="review-block-title"><%=review.title%></div>
+                                            <div class="review-block-description"><%=review.description%></div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <% if(currentUser && currentUser._id.equals(review.author.id)){ %>
+                                    <a class="btn btn-xs btn-warning edit-btn" style="float:right" href="/professors/<%=professor._id%>/pReviews/<%=review._id%>/edit">Edit</a>
+                                    <br>
+                                    <form class="delete-form" action="/professors/<%=professor._id%>/pReviews/<%=review._id%>?_method=DELETE" method="POST">
+                                        <button class="btn btn-xs btn-danger del-btn" style="margin:0 5px 0 620px">Delete</button>
+                                    </form>
+                                    <% } %>
+
+                                </div>
+                                <% })%>        
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- /container -->
+
+            </div>
+     
+        <div class="clearfix"></div>
+    </div>
+
+</div>
+</div>
+</div>
+
+<% include ../partials/footer.ejs %>
+
+
+

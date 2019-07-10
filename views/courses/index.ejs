@@ -1,0 +1,77 @@
+<% include ../partials/header %>
+<script>
+
+$(window).scroll(function() {
+  $('#mascot-text').text("Can't find a course? Click Add new Course");
+  var viewportWidth = $(window).width();
+  if(viewportWidth >'500') {
+    $('#courseMascotImg').css('width','25%');
+ 
+ $('#courseMascotImg').attr('src','/images/mascotCourse.png');
+   $('#mascotGreetingCourse').css('top','45%');
+   $('#mascotGreetingCourse').css('right','40%');
+   $('#mascotGreetingCourse').css('position','fixed');
+   } 
+
+   else {
+
+$('#courseMascotImg').css('width','60%');
+   
+ 
+ $('#courseMascotImg').attr('src','/images/mascotCourse.png');
+   $('#mascotGreetingCourse').css('top','50%');
+   $('#mascotGreetingCourse').css('right','0%');
+   $('#mascotGreetingCourse').css('position','fixed');
+   }
+});
+      
+</script>
+
+<div class="container-fluid">
+    <header class="jumbotron course-header">
+        <div class="container-fluid course-header-text ">
+            <h1>Courses</h1>
+            <p>Pick a course from the list</p>
+            <div class="text-left"><a class="btn btn-outline-rounded readBtn" title="Click to add a course" href="/courses/new" style="font-size: 1.2em; z-index: 99;" id="addCourseBtn">Add New Course</a>
+        </div>
+    </header>
+    <div class="courseList"></div>
+    <div id="mascotGreetingCourse" class="mascot-hi">
+            <p id="mascot-text">Pick a course to see reviews</p>
+            <img src="/images/elephant1.png" alt="Mascot greeting" id="courseMascotImg">
+
+    </div>
+ 
+        <% courses.forEach(function(course){ %>
+
+            <div class="row text-left ml-2 mr-2 " >
+
+                    <div class="card course-card mt-2" >
+                        <div class="container-fluid">
+                                <div class="col-sm-4 col-md-2 text-center" style="margin-top:1em;">
+                                        <img src="/images/courseicon.png" class="course-icon" alt="course icon">
+                                </div>
+                            <!-- <img src="/images/wehner.png" alt="wehner"> -->
+                            <div class="card-body col-sm-6 col-md-8">
+                                <h3><%=course.title%></h3>
+                                <p style="overflow:hidden"><%=course.name%></p>
+                               
+                            </div>
+                            <div class="card-body col-sm-4 col-md-2"  style="margin-top:2em;">
+                                    <p><a href="/courses/<%=course._id%>" class="btn btn-primary btn-lg" role="button">More Info</a></p>
+                            </div>
+                        </div>
+                           
+                    </div>
+                
+            </div>
+        <% }) %>
+
+   
+
+</div>
+
+
+<% include ../partials/footer %>
+
+

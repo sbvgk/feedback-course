@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CourseWalk- Contact us</title>
+        <!--Custom Stylesheet for the page-->
+        <link rel="stylesheet" type="text/css" href="stylesheets/contact_purecss.css" />
+        <!--Font Awesome icons stylesheet-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+<script>
+    function saveContact(){
+        alert("Thank you for contacting us. We will shortly get back to you")
+        window.open("/home");
+
+    }
+
+</script>
+
+    <body>
+        <div id="contactPage">
+
+            <header>
+                <nav class="navi-bar"> 
+                    <nav class="wrapper">
+                        <div class="site-logo"><a href="/home"><img id="logo-image" src="images/logo.jpg"></a></div>
+                        <div class="navi-links">
+                            <input type="checkbox" id="toggle">   
+                            <label for="toggle" class="togglemenu">
+                                <i class="fa  fa-bars"></i></label>
+                            <ul>
+                                <li><a href="/home" class="active">Home</a></li>
+                                <li><a href="/about">About</a></li>
+                                <li><a href="/courses">Courses</a></li>
+                                <li><a href="/professors">Professors</a></li>
+                                <li><a class="button" style="background-color: rgb(224,162,47);" href="/login">Login</a></li>
+                            </ul>
+                        </div>
+
+                    </nav>
+                </nav>
+            </header>
+
+
+            <main id="site-content" role="main">
+                <div id="contact-info">
+                        <div class="form_wrapper">
+                            <div class="form_container">
+                                <form class="contactForm">
+                                        <div class="row" style="padding-bottom: 1em;">
+                                        <div class="col_half">
+                                            <label>First name</label>
+                                            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                            <input type="text" name="first_name" placeholder="John" required />
+                                            </div>
+                                        </div>
+                                        <div class="col_half">
+                                            <label>Last name</label>
+                                            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                            <input type="text" name="last_name" placeholder="Doe" />
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="row clearfix" style="padding-top: 2em;">
+                                        <div class="col_half">
+                                            <label>Email</label>
+                                            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                                            <input type="email" name="email" placeholder="johndoe@gmail.com" required />
+                                            </div>
+                                        </div>
+                                        <div class="col_half">
+                                            <label>Phone</label>
+                                            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-phone"></i></span>
+                                            <input type="tel" name="phone" placeholder="Phone no" pattern="[0-9]{10}" />
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="row clearfix" style="padding-top: 1em;">
+                                        <div>
+                                            <label>Comments</label>
+                                            <div class="textarea_field"> <span><i aria-hidden="true" class="fa fa-comment"></i></span>
+                                            <textarea cols="46" rows="3" name="comments"></textarea>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        
+                                        <input style="width:40%; float: right; height: 2em; border-radius: 10%;" class="button" type="submit" value="Submit" onclick="saveContact()" />
+                                        <br>
+                                        <br>
+                                        
+                                </form>
+                            </div>
+                        </div>
+                        <div id="image-container">
+                                <img id="landing-image" src="images/landing-image.png" alt="Elephant" >
+                        </div>
+    
+                    </div>
+                   
+                       
+
+
+
+
+
+
+            </main>    <!--end of site content-->  
+
+            <!--Footer-->            
+            <footer class="page-footer">
+                
+                <div class="row">
+                        <div class="col_half">
+                                <p class="footer-links" style="padding-top:1em;"><a href="/home">Home</a><br> <a href="#/about">About Us </a> <br> </p>
+                        </div>
+                        <div class="col_half">
+                                <p class="footer-links"><a href="/courses">Courses</a> <br> <a href="/professors">Professors</a>  <br>
+                                    <a class="btn" href="contact.html">Contact us</a> </p>
+                        </div>
+                    </div>
+               
+                     
+               
+                <p class="copyright clearfix">©Copyright of CakeWalk.  Developed by Team#14 2019</p>
+                <div class="footer-social-navbar wrapper">
+                    <!--<div class="h6">Follow us on</div> -->
+                    <div>
+                        <ul class="social-icons">
+                            <li><a href="https://www.facebook.com/" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/" class="social-icon"> <i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://www.instagram.com/" class="social-icon"> <i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.linkedin.com/" class="social-icon"> <i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>    
+                </div>
+            </footer>  
+
+        </div> <!--end of landingpage-->
+    </body>
+</html>
+

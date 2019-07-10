@@ -1,0 +1,621 @@
+/** Team14 RWD wwebsite Stylesheet**/
+/**Authors: Purnima Kotharu, Gopikrishna Mylarisetti, Anand Krishnan, Shivanesh Bharathi**/
+
+/*Import fonts*/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+/*---------------------------------------------------------------------------------------*/
+@-webkit-viewport { width: device-width; }
+@-moz-viewport { width: device-width; }
+@-ms-viewport { width: device-width; }
+@-o-viewport { width: device-width; }
+@viewport { width: device-width; }
+
+/*---------------------------------------------------------------------------------------*/
+/*---RESET---*/
+
+body, div,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, dl, dt, dd, ol, ul, li, hr,
+fieldset, form, label, legend, th, td,
+article, aside, figure, footer, header, hgroup, menu, nav, section,
+summary, hgroup {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+/*--------------------------------------------*/
+
+
+
+* {
+    box-sizing: border-box;
+  }
+
+html{
+    line-height: 1.15;
+   
+}
+
+
+
+/*Body*/
+body{
+    margin:0;
+    width:100vw; /* considering base of 932 px for width calculations and to ensure that width doesnt overflow screen width */
+    height: 892px; /* setting initial pageheight to 1080 px for base calculation*/
+   
+   font-family: 'Roboto', sans-serif; 
+    background-color: rgba(255, 255, 255, 0.904);
+    font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+    
+  }
+
+
+  #contactPage{
+    position: absolute;
+    background-color: white;
+    margin: 0;
+    height: 100%; /* 100% of the page height*/
+    width: 100%;
+ }
+  header{
+      position: fixed;
+      width: 100%;
+      top:0;
+      left:0;
+      z-index:100;
+      height: 5.6%; /*the height corresponds to 50 px  hence 50px/892px = 5.6%*/
+      background: rgb(6, 2, 1);
+  }
+  /**Navigation bar**/
+
+    /* Content Wrapper*/
+.wrapper {
+    margin: 0 auto;
+    max-width: 100%;/* the width of the wrapper is 100 percent of the original page*/
+	max-height:100%;/* the height of the wrapper is 100 percent of the original page*/
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .site-logo{
+      display:block;
+  }
+
+
+    #logo-image{
+        
+    height:100%;/* the height of the image is  is same as height of wrapper hence  100 percent */
+    width: 8em;/* the width is 144 px  144px/932.67px is 15.439544%*/
+    border: 1px solid rgb(20, 8, 3);
+    }
+
+
+  .navi-bar {
+    background-color: rgb(173, 233, 248);
+    width:100%;/* the width of nav bar and width of  wrapper is same hence the nav bar is 100 percent of the wrapper*/
+    float: right;
+    height: 2.5em;
+    }
+
+
+    label.togglemenu{
+        display:none;
+    }
+
+    #toggle{
+        display:none;
+    }
+
+  .navi-bar ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    float:right;
+    } 
+
+   .navi-bar li{
+    margin:0;
+    display: block;
+    padding-top: 0.5em;
+    padding-right:1em;
+
+
+} 
+  .navi-bar a{
+      color: rgb(6, 110, 161); 
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.9em; /* em calculations for text adjustments on different views 14px/16px = 0.9em*/
+      font-family: 'Roboto Condensed', sans-serif;
+      text-transform: uppercase;
+      height: 100%;/* navigation bar height is equal to header height*/
+      transition: all .5s ease;
+  }
+ .navi-bar a:hover{
+      background-color: rgb(248, 242, 242);
+      color:black;
+      height:100%;
+  }
+
+  .active{
+    /*background-color: rgb(250, 124, 74);*/
+    height:100%;
+  }
+
+
+  /* display the toggle icon on screen resolutions less than 600px**/
+  @media screen and (max-width: 600px) {
+      header{
+          position: relative;
+            width: 100%;
+            height: auto;
+            margin: 0; 
+      } 
+      .navi-bar{
+          margin: 0 auto;
+          position: fixed;
+          width: 100%;/* navigation bar width correponds to 100percent of the header width*/
+      }
+
+      .navi-bar ul{
+          padding: 0; 
+          width: 100%;
+          display:block;
+          transition: all 1s ease;
+          visibility: hidden;
+          height:0;
+          opacity: 0;
+          text-align: center;
+          
+      }
+      .navi-bar li{
+        float:none;
+        width:100%;
+        margin :0;
+        background-color: rgb(173, 233, 248);
+        padding-top: 1em;
+        border: none;
+        text-align: center;
+        display:block;
+    }
+    .nav-bar a{
+        width: 100%;
+        display:block;
+        
+    }
+    .active{
+        background-color: rgb(222, 226, 228);
+        width: 100%;
+      }
+       label.togglemenu{
+          text-align: right;
+          padding:0.5em;
+          color:white;
+          display:block;
+          background: rgb(6, 110, 161);
+      } 
+
+      #toggle:checked ~ ul {
+          opacity: 1;
+          height: 100vh;/* toggle checked corresponds to 100 percent of viewport height */
+          visibility: visible;
+      }
+      .togglemenu{
+          cursor:pointer;
+          display:block;
+          float: right;
+      }
+      .wrapper {
+          display: flex;
+        }
+    }
+
+
+/**site contents**/
+
+
+#contact-info{
+    display: block;
+    width: 100%; /*landing info width is 100 percent of page width*/
+    height: 100%;
+    background-color: white;
+    border-bottom: 5px solid rgb(6, 3, 1);/*black border*/
+    margin-top: 2.2em;
+}
+
+
+
+h1{
+    text-align: left;
+    font-family: sans-serif;
+    font-weight: 300;  
+    color: black;
+    margin: 0 0 1em 0;
+}
+
+h2{
+    text-align: left;
+    font-family: sans-serif;
+    font-weight: 150;  
+    color: rgb(6, 110, 161);
+    margin: 0 0 1em 0;
+    font-size: 1em;
+}
+p{
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 0.8em;
+    margin-bottom:1.5vh;/*1.5 percent of viewport height*/
+}
+@media screen and (min-width:600px){
+
+    #image-container{
+        position: absolute;
+        float: right;
+        width: 40%;/* width corresponds to 50 percent of contact info width ( 372 px  372px/932.67px is 40%)*/
+        right: 0%;
+        top: 10%;
+    }
+
+}
+
+#landing-image{
+    
+    margin-top: 0.5em;
+    width: 50%;/* landing image is 50 percent of landing info*/
+    height: 55vh;/* the height is 55 percent of the viewport height*/
+    margin-left: 20vh;/* left margin corresponds to 20 % of landing info width */
+    
+}
+
+
+
+@media all and (max-width:426px){
+
+   
+/*added media queries to increase responsive of the website to be used in mobile devices*/
+
+    #image-container{
+        position:absolute;
+        right: 1%;
+        justify-content: center;
+        display:none;
+    }
+
+    #contact-info{
+        margin-top: 10vh;/* margin corresponds to 10 percent of viewport height*/
+        display: block;
+        width: 100%;/* contact info is 100 percent of the page*/
+        height: 100%;
+        margin-bottom: 3vh;/* margin bottom corresponds to 3 % of viewport height*/
+    }
+
+    
+}
+
+
+.container{
+    width: 80%;
+    margin:2vh auto;
+
+}
+
+main{
+    display: block; 
+    width: 100%;
+}
+.page-footer{
+    background-color: #3c3d41;
+    color: white;
+    padding-top: 30px;
+  width: 100%;
+  text-align: center;
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  border-top: 3px solid rgb(6,3, 1);
+}
+.footer-social-navbar{
+    background-color: rgb(175, 177, 179);
+    max-height: 6%;/* the max height is 6 % of page height */
+}
+.page-footer ul {
+    padding:0;
+    list-style: none;
+}
+.footer-social-icons {
+    width: 350px;
+    display:block;
+    margin: 0 auto;
+	float:right;
+    
+}
+ul.social-icons {
+    margin-top: 0.8vh;/* top margin corresponds to 0.8 % of viewport height*/
+    padding-bottom: 1vh;/* padding-bottom corresponds to 1% of viewport height */
+	float:right;
+}
+.social-icons li {
+    vertical-align: top;
+    display: inline;
+}
+.social-icons a {
+    color:black;
+    text-decoration: none;
+    padding-right: 2vh;/* social icons corresponds to 2 percent of viewport height */
+}
+.page-footer .wrapper{
+    display:flex;
+    justify-content: space-evenly;
+}
+.fa-facebook {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color:white;
+    color: black;
+}
+.fa-facebook:hover {
+    background-color: skyblue;
+}
+.fa-twitter {
+    padding:10px 12px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color:white;
+    color: black;
+}
+.fa-twitter:hover {
+    background-color: #00aced;
+}
+
+.fa-instagram {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color:white;
+    color: black;
+}
+.fa-instagram:hover {
+    background-color: #e64a41;
+}
+.fa-linkedin {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color:white;
+    color: black;
+    cursor: pointer;
+}
+.fa-linkedin:hover {
+    background-color: #0073a4;
+}
+ .page-footer .h6{
+     font-size: 0.9em;
+     padding-left:1em;
+     padding-top:0.8em;
+     color: black; 
+ }
+ .page-footer a {
+     color:white;
+ }
+
+ .page-footer a:hover {
+    color:skyblue;
+}
+
+@media all and (max-width:426px){
+        
+    .page-footer{
+        font-size:1em;
+    }
+    .social-icons a {
+        color: #fff;
+        text-decoration: none;
+        padding-right: 1em;
+        margin-bottom: 0.5em;
+    }
+    ul.social-icons{
+        margin-bottom: 1em;
+    }
+    
+    .page-footer .h6 {
+        padding-top: 1.2em;
+    }
+    .page-footer .wrapper{
+        display:flex;
+        /*justify-content:space-evenly;*/
+    }
+}
+
+
+/** Form css: styles for form **/
+
+
+
+/*clear float*/
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+}
+/*wrapper for the contact form*/
+.form_wrapper {
+	background:#fff;
+	width:41.8459%;/* width corresponds to 40 percent of contact info width ( 360 px+15+15= 390 px  390px/932.67px is 41.8459%)*/
+    max-width:100%;
+    height: 80%;
+	box-sizing:border-box;
+	padding:15px;
+	margin:10% auto 0;
+	position:relative;
+	z-index:1;
+
+}
+
+
+.form_container {
+	padding:15px;
+    border:1px dashed #ccc;
+    -webkit-box-shadow:0 23px 20px -21px rgba(0, 0, 0, 0.9);
+	-moz-box-shadow:0 23px 20px -21px rgba(0, 0, 0, 0.9);
+	box-shadow:0 23px 20px -21px rgba(0, 0, 0, 0.9);
+}
+.form_wrapper h2 {
+	font-size:1.5em;
+	line-height:1.5em;
+	margin:0;
+}
+.form_wrapper .title_container {
+	text-align:center;
+	margin:-15px -15px 15px;
+	padding:15px 0;
+	border-bottom:1px dashed #ccc;
+}
+.form_wrapper h3 {
+	font-size:1.1em;
+	font-weight:normal;
+	line-height:1.5em;
+	margin:0;
+}
+.form_wrapper .row {
+	margin:10px -15px;
+}
+.form_wrapper .row > div {
+	padding:0 15px;
+	box-sizing:border-box;
+}
+.form_wrapper .col_half {
+	width:50%; /* 50% of the form wrapper area*/
+    float:left;
+    margin-top: 1em;
+}
+.form_wrapper label {
+	display:block;
+    margin:0 0 0.5em;
+    font-size: 1em;
+}
+.form_wrapper .input_field, .form_wrapper .textarea_field {
+	position:relative;
+}
+.form_wrapper .input_field > span, .form_wrapper .textarea_field > span {
+	position:absolute;
+	left:0;
+	top:0;
+	color:#333;
+	height:100%;
+	border-right:1px solid #ccc;
+	text-align:center;
+    width:15%;
+  
+}
+.form_wrapper .textarea_field > span {
+	border-bottom:1px solid #ccc;
+	max-height:25%;
+}
+.form_wrapper .input_field > span > i, .form_wrapper .textarea_field > span > i {
+    padding-top:0.5em;
+}
+.form_wrapper input[type="text"], .form_wrapper input[type="email"], .form_wrapper input[type="tel"], textarea {
+	width:100%;
+	padding:0.5em 2.5em;
+	border:1px solid #ccc;
+	box-sizing:border-box;
+	outline:none;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+    transition: all 0.30s ease-in-out;
+    
+    font-size: 0.8em;
+}
+.form_wrapper textarea {
+	height:8em;
+}
+.form_wrapper input[type="text"]:focus, .form_wrapper input[type="email"]:focus, .form_wrapper input[type="tel"]:focus, textarea:focus {
+	-webkit-box-shadow:0 0 2px 1px rgba(255, 169, 0, 0.5);
+	-moz-box-shadow:0 0 2px 1px rgba(255, 169, 0, 0.5);
+	box-shadow:0 0 2px 1px rgba(255, 169, 0, 0.5);
+	border:1px solid #f5ba1a;
+}
+.form_wrapper input[type="submit"] {
+	background:#f5ba1a;
+	height:1.2em;
+	line-height:1.2em;
+	width:100%;
+	border:none;
+	outline:none;
+	cursor:pointer;
+	color:#fff;
+	font-size:1.2em;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	transition: all 0.30s ease-in-out;
+}
+.form_wrapper input[type="submit"]:hover, .form_wrapper input[type="submit"]:focus {
+	background:#daa106;
+}
+
+
+.credit{
+	position:relative;
+	z-index:1;
+	text-align:center;
+	padding:15px;
+	color:#f5ba1a;	
+}
+.credit a{
+	color:#daa106;	
+}
+@media (max-width: 600px) {
+
+    .form_wrapper {
+        width:100%;
+        font-size : 1em;
+        height: 60%;
+    }  
+.form_wrapper .col_half {
+    padding:0;
+	width:100%;
+    float:none;
+    
+}
+.form_wrapper label {
+	margin:10px 0;
+}
+.form_wrapper .input_field > span, .form_wrapper .textarea_field > span { 
+    width: 10%;  
+}
+.form_wrapper input[type="text"], .form_wrapper input[type="email"], .form_wrapper input[type="tel"], textarea {
+   padding: 0.5em 2.5em; 
+}
+}
+
+footer  .col_half {
+	width:50%; /* 50% of the form wrapper area*/
+    float:left;
+    margin-top: 1em;
+}
+
+
+

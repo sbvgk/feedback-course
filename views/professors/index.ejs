@@ -1,0 +1,73 @@
+<% include ../partials/header %>
+<script>
+
+        $(window).scroll(function() {
+        var viewportWidth = $(window).width();
+        $('#mascot-text').text("Can't find a Professor review? Click 'Add new professor' to add");
+         
+   if(viewportWidth >'500') {
+    $('#courseMascotImg').css('width','25%');
+ 
+ $('#courseMascotImg').attr('src','/images/mascotCourse.png');
+   $('#mascotGreetingCourse').css('top','45%');
+   $('#mascotGreetingCourse').css('right','40%');
+   $('#mascotGreetingCourse').css('position','fixed');
+   }    
+   else {
+    $('#courseMascotImg').css('width','60%');
+   
+ 
+ $('#courseMascotImg').attr('src','/images/mascotCourse.png');
+   $('#mascotGreetingCourse').css('top','45%');
+   $('#mascotGreetingCourse').css('right','0%');
+   $('#mascotGreetingCourse').css('position','fixed');
+   }
+  
+ });
+        </script>
+
+<div class="container-fluid">
+    <header class="jumbotron prof-header">
+        <div class="container-fluid prof-header-text">
+            <h1>Professors</h1>
+            <p>List of the professors</p>
+            <p><a class="btn btn-outline-rounded readBtn" href="/professors/new" style=" z-index: 20;">Add New professor</a></p>
+        </div>
+    </header>
+    <div id="mascotGreetingCourse" class="mascot-hi">
+            <p id="mascot-text">Pick a professor to see reviews</p>
+            <img src="/images/elephant1.png" alt="Mascot greeting" id="courseMascotImg">
+
+    </div>
+    
+   
+        <% professors.forEach(function(professor){ %>
+            <div class="row text-left ml-2 mr-2" >
+
+                    <div class="card prof-card mt-2" >
+                        <div class="container-fluid">
+                                <div class="col-sm-4 col-md-2 text-center" style="margin-top:1em;">
+                                        <img src="/images/professorIcon.jpg" class="course-icon" alt="course icon">
+                                </div>
+                            <!-- <img src="/images/wehner.png" alt="wehner"> -->
+                            <div class="card-body col-sm-6 col-md-8">
+                            <h3><%=professor.name%></h3>
+                            <p style="overflow:hidden"><%=professor.title%></p>
+                        </div>
+                        <div class="card-body col-sm-4 col-md-2"  style="margin-top:2em;">
+                           <p><a href="/professors/<%=professor._id%>" class="btn btn-primary btn-lg" role="button">More Info</a></p>
+                        </div>
+                    </div>
+                           
+                </div>
+            
+        </div>
+    <% }) %>
+
+
+
+</div>
+
+<% include ../partials/footer %>
+
+

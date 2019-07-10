@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>YelpCamp</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/landing.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+    </head>
+    <body>
+    
+<nav class="navbar navbar-expand-lg navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/about"><img src="/images/logo.jpg" alt="CourseWalk Logo"></a>
+                </div>
+                <div id="myNavbar" class="navbar-collapse collapse">
+                    <ul class="navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a href="/home" class="nav-link">Home</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-value="about" href="/about">About Us</a></li>   
+                        <li class="nav-item">
+                            <a class="nav-link" data-value="course" href="/courses">Courses</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-value="professor" href="/professors">Professors</a></li>
+            
+                        <%if(!currentUser){ %>
+                        <li class="nav-item">
+                            <a href="/login" id="signInBtn" class="nav-link button">Login</a></li>
+                        <% } else { %>
+                        <li class="nav-item">
+                            <a href="/logout" id="signOutBtn" class="nav-link button">Logout</a></li>
+                           <li class="nav-item">Signed In as <%=currentUser.username%></li> 
+                         <% } %>
+                        
+                    </ul>
+                </div><!--/.navbar-collapse -->
+            </div>
+        </nav>
+    
+    <div id="landing-header">
+ 		<h1>Welcome to CourseWalk!</h1>
+		<a href="/courses" class="btn btn-lg btn-success">View All Courses</a>
+    </div>
+    
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
